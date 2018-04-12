@@ -3,17 +3,9 @@ package models;
 import java.util.ArrayList;
 
 public class Node<T> {
-	ArrayList<Node<T>> nodeList;
-	public ArrayList<Node<T>> getNodeList() {
-		return nodeList;
-	}
-
-	public void setNodeList(ArrayList<Node<T>> nodeList) {
-		this.nodeList = nodeList;
-	}
-
-	Node<T> fatherNode;
-	T info;
+	private ArrayList<Node<T>> nodeList;
+	private Node<T> fatherNode;
+	private T info;
 	
 	public Node(T info, Node<T> fatherNode) {
 		this.info = info;
@@ -24,6 +16,14 @@ public class Node<T> {
 		return info;
 	}
 	
+	public ArrayList<Node<T>> getNodeList() {
+		return nodeList;
+	}
+	
+	public void setNodeList(ArrayList<Node<T>> nodeList) {
+		this.nodeList = nodeList;
+	}
+
 	public Node<T> getFatherNode(){
 		return fatherNode;
 	}

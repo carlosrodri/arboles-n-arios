@@ -23,35 +23,33 @@ public class Tree {
 		ArrayList<Node<String>> nodeList = new ArrayList<>();
 		if(root.equals(this.root)) {
 			for (String child : listUniqueExtension) {
-				nodeList.add(new Node<String>(child, root));
+				Node<String> childNode = new Node<String>(child, root);
+				setChild(childNode, listElements, listUniqueExtension);
+				nodeList.add(childNode);
 			}
 			root.setNodeList(nodeList);
 		}else {
 			ArrayList<Node<String>> list = new ArrayList<>();
 			for (String element : listElements) {
-				if(element.substring(element.length()-3, element.length()).equals(root.getInfo())) {
-					list.add(new Node<String>(element, root));
+				if(getFileExtension(new File(element)).equals(root.getInfo())) {
+					Node<String> node = new Node<String>(element, root);
+					list.add(node);
 				}
 			}
 			root.setNodeList(list);
 		}
 	}
-	
-	public void print(Node<String> root) {
-		if(root != null) {
-			System.out.println(root.getInfo() + "-----father node");
-			System.out.println(root.getNodeList() + "list");
-			if(root.getNodeList() != null) {
-				for (Node<String> node : root.getNodeList()) {
-					System.out.println(node.getInfo() + "---------- song node");
-				}
-			}
-		}else {
-
-		}
-	}
 
 	public Node<String> getRoot() {
 		return root;
+	}
+
+	private String getFileExtension(File file) {
+		String name = file.getName();
+		try {
+			return name.substring(name.lastIndexOf(".") + 1);
+		} catch (Exception e) {
+			return "";
+		}
 	}
 }

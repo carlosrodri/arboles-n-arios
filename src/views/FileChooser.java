@@ -2,8 +2,6 @@ package views;
 
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
 import controllers.Controller;
 
 public class FileChooser extends JDialog{
@@ -15,16 +13,8 @@ public class FileChooser extends JDialog{
 		setSize(800,400);
 		setLocationRelativeTo(null);
 		setModal(true);
-//		FileNameExtensionFilter filterX = new FileNameExtensionFilter(".xml", "xml");
-//		FileNameExtensionFilter filterJ = new FileNameExtensionFilter(".jsn", "jsn");
-//		FileNameExtensionFilter filterB = new FileNameExtensionFilter(".bin", "bin");
-//		FileNameExtensionFilter filterT = new FileNameExtensionFilter(".txt", "txt");
 		jFileChooser = new JFileChooser();
 		jFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-//		jFileChooser.setFileFilter(filterX);
-//		jFileChooser.setFileFilter(filterJ);
-//		jFileChooser.setFileFilter(filterB);
-//		jFileChooser.setFileFilter(filterT);
 	}
 
 	public String getPathFile() throws Exception{

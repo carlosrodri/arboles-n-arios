@@ -24,7 +24,6 @@ public class Dao {
 	}
 	
 	public ArrayList<String> getElementsByType(File[] list){
-		
 		for (int i = 0; i < list.length; i++) {
 			if(list[i].isDirectory()) {
 				getElementsByType(getElements(list[i].getPath()));
@@ -37,8 +36,17 @@ public class Dao {
 	
 	public HashSet<String> getUniqueExtension(){
 		for (String string : elements) {
-			uniqueExtension.add(string.substring(string.length()-3, string.length()));
+			uniqueExtension.add(getFileExtension(new File(string)));
 		}
 		return uniqueExtension;
+	}
+	
+	private String getFileExtension(File file) {
+	    String name = file.getName();
+	    try {
+	        return name.substring(name.lastIndexOf(".") + 1);
+	    } catch (Exception e) {
+	        return "";
+	    }
 	}
 }

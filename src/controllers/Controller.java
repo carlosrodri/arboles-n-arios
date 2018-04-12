@@ -31,15 +31,13 @@ public class Controller implements ActionListener{
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
-			try {
-				dao.getElementsByType(dao.getElements(path));
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-			tree.add(path, dao.getElementsByType(dao.getElements(path)), dao.getUniqueExtension());
+			createTree(path);
 			break;
 		}
 		mainWindow.setDatas(tree);
 	}
 
+	private void createTree(String path) {
+		tree.add(path, dao.getElementsByType(dao.getElements(path)), dao.getUniqueExtension());
+	}
 }

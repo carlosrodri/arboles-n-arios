@@ -1,6 +1,7 @@
 package views;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JTree;
@@ -34,12 +35,23 @@ public class MainWindow extends JFrame{
 	
 	public void setDatas(Tree tree) {
 		DefaultMutableTreeNode father = new DefaultMutableTreeNode(tree.getRoot().getInfo());
-		for (Node<String> node : tree.getRoot().getNodeList()) {
-			DefaultMutableTreeNode song = new DefaultMutableTreeNode(node.getInfo());
-			father.add(song);
-		}
 		DefaultTreeModel model = new DefaultTreeModel(father);
 		jtree.setModel(model);
+		int i = 0;
+		for (Node<String> node : tree.getRoot().getNodeList()) {
+			DefaultMutableTreeNode son = new DefaultMutableTreeNode(node.getInfo());
+			model.insertNodeInto(son, father, i);
+			setFiles(model, son, node.getNodeList());
+			i++;
+		}
 		revalidate();
+	}
+	
+	private void setFiles(DefaultTreeModel model, DefaultMutableTreeNode son, ArrayList<Node<String>> list) {
+		int i = 0;
+		for (Node<String> node : list) {
+			model.insertNodeInto(new DefaultMutableTreeNode(node.getInfo()), son, i);
+			i++;
+		}
 	}
 }

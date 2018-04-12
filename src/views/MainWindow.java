@@ -1,6 +1,7 @@
 package views;
 
 import java.awt.BorderLayout;
+import java.awt.ScrollPane;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -28,7 +29,11 @@ public class MainWindow extends JFrame{
 		setJMenuBar(menuBar.createMenuBar("Select", "Select", controller, Actions.SELECT.toString()));
 		
 		jtree = new JTree();
-		add(jtree, BorderLayout.CENTER);
+		
+		ScrollPane scrollPane = new ScrollPane();
+		scrollPane.add(jtree);
+		
+		add(scrollPane, BorderLayout.CENTER);
 		
 		setVisible(true);
 	}

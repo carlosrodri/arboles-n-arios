@@ -4,6 +4,14 @@ import java.util.ArrayList;
 
 public class Node<T> {
 	ArrayList<Node<T>> nodeList;
+	public ArrayList<Node<T>> getNodeList() {
+		return nodeList;
+	}
+
+	public void setNodeList(ArrayList<Node<T>> nodeList) {
+		this.nodeList = nodeList;
+	}
+
 	Node<T> fatherNode;
 	T info;
 	

@@ -2,13 +2,16 @@ package models;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Dao {
 	private File file;
 	ArrayList<String> elements;
+	HashSet<String> uniqueExtension;
 	
 	public Dao() {
 		elements = new ArrayList<>();
+		uniqueExtension = new HashSet<>();
 	}
 	
 	public File[] getElements(String path){
@@ -30,5 +33,12 @@ public class Dao {
 			}
 		}
 		return elements;
+	}
+	
+	public HashSet<String> getUniqueExtension(){
+		for (String string : elements) {
+			uniqueExtension.add(string.substring(string.length()-3, string.length()));
+		}
+		return uniqueExtension;
 	}
 }

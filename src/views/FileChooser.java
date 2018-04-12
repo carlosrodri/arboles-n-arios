@@ -20,6 +20,7 @@ public class FileChooser extends JDialog{
 //		FileNameExtensionFilter filterB = new FileNameExtensionFilter(".bin", "bin");
 //		FileNameExtensionFilter filterT = new FileNameExtensionFilter(".txt", "txt");
 		jFileChooser = new JFileChooser();
+		jFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 //		jFileChooser.setFileFilter(filterX);
 //		jFileChooser.setFileFilter(filterJ);
 //		jFileChooser.setFileFilter(filterB);

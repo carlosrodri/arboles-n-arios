@@ -6,7 +6,7 @@ import java.util.HashSet;
 
 public class Dao {
 	private File file;
-	ArrayList<String> elements;
+	ArrayList<File> elements;
 	HashSet<String> uniqueExtension;
 	
 	public Dao() {
@@ -23,20 +23,20 @@ public class Dao {
 		return list;
 	}
 	
-	public ArrayList<String> getElementsByType(File[] list){
+	public ArrayList<File> getElementsByType(File[] list){
 		for (int i = 0; i < list.length; i++) {
 			if(list[i].isDirectory()) {
 				getElementsByType(getElements(list[i].getPath()));
 			}else {
-				elements.add(list[i].getName());
+				elements.add(list[i]);
 			}
 		}
 		return elements;
 	}
 	
 	public HashSet<String> getUniqueExtension(){
-		for (String string : elements) {
-			uniqueExtension.add(getFileExtension(new File(string)));
+		for (File string : elements) {
+			uniqueExtension.add(getFileExtension(string));
 		}
 		return uniqueExtension;
 	}

@@ -34,7 +34,7 @@ public class Controller implements ActionListener{
 			createTree(path);
 			break;
 		}
-		mainWindow.setDatas(tree);
+		mainWindow.setDatas(tree, mainWindow.getSizeOfFile());
 	}
 
 	private void createTree(String path) {

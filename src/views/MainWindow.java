@@ -24,11 +24,13 @@ public class MainWindow extends JFrame{
 		setExtendedState(MAXIMIZED_BOTH);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(new BorderLayout());
+		setTitle("Files Tree V 1.0");
 		
 		menuBar = new Menu_Button();
 		setJMenuBar(menuBar.createMenuBar("Select", "Select", controller, Actions.SELECT.toString()));
 		
 		jtree = new JTree();
+		jtree.setModel(null);
 		
 		ScrollPane scrollPane = new ScrollPane();
 		scrollPane.add(jtree);
@@ -41,6 +43,7 @@ public class MainWindow extends JFrame{
 	public void setDatas(Tree tree) {
 		DefaultMutableTreeNode father = new DefaultMutableTreeNode(tree.getRoot().getInfo());
 		DefaultTreeModel model = new DefaultTreeModel(father);
+		model.setAsksAllowsChildren(true);
 		jtree.setModel(model);
 		int i = 0;
 		for (Node<String> node : tree.getRoot().getNodeList()) {
